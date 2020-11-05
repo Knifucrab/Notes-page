@@ -41,26 +41,45 @@
                 <input type="text" id="title" class="note-title text-white w-75" maxlength="60">
             </div>
             <div class="p-1 d-flex justify-content-center">
-                <textarea name="" form="noteForm"  id="text" cols="25" rows="5" maxlength="500" class="note-input text-white w-100" placeholder="Anota lo que necesites" style="resize: none;"></textarea>
+                <textarea name="" form="noteForm" id="text" cols="25" rows="5" maxlength="500"
+                    class="note-input text-white w-100" placeholder="Anota lo que necesites"
+                    style="resize: none;"></textarea>
             </div>
-            <div class="d-flex justify-content-around p-2">    
+            <div class="input-group mb-3 p-2 d-flex justify-content-end">
+                <div class="input-group-prepend d-flex align-items-center p-2"">
+                    <label for="" class="text-white">Categoria</label>
+                </div>
+                <div class="w-50">
+                    <select class="custom-select text-white" id="categoryInput"
+                    style="background-color: rgb(98, 98, 98);">
+                    <option value="" selected>Ninguna</option>
+                    <option value="Trabajo">Trabajo</option>
+                    <option value="Tareas">Tareas</option>
+                    <option value="Compras">Compras</option>
+                </select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around p-2">
                 <button type="submit" class="btn btn-outline-warning w-50">Guardar</button>
             </div>
         </form>
     </div>
 
+    <section class="container text-white-50" id="notesAlmacenator">
+    </section>
+
     <!-- Scripts y links -->
     <div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
         <script src="app.js"></script>
         <link rel="stylesheet" href="style.css">
 
-    </div>    
-    </body>
+    </div>
+</body>
 
 </html>
