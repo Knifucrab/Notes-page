@@ -33,9 +33,19 @@
     </nav>
 
     <!-- take a note -->
-    <div class="p-5">
-        <form action="" class="d-flex justify-content-center note-form">
-            <input type="text" class="note-input text-white" size="70" placeholder="Escribe una nota">
+    <h2 class="text-center text-white pt-3">Toma una nota!</h2>
+    <div class="p-5 d-flex justify-content-center">
+        <form class=" note-form d-flex flex-column w-25 p-2" id="noteForm">
+            <div class="p-2 ">
+                <label for="title" class="text-white">Titulo</label>
+                <input type="text" id="title" class="note-title text-white w-75" maxlength="60">
+            </div>
+            <div class="p-1 d-flex justify-content-center">
+                <textarea name="" form="noteForm"  id="text" cols="25" rows="5" maxlength="500" class="note-input text-white w-100" placeholder="Anota lo que necesites" style="resize: none;"></textarea>
+            </div>
+            <div class="d-flex justify-content-around p-2">    
+                <button type="submit" class="btn btn-outline-warning w-50">Guardar</button>
+            </div>
         </form>
     </div>
 

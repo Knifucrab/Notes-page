@@ -20,9 +20,15 @@ body {
     align-items: center;
 }
 
-.note-input {
+.note-input, .note-title {
     background-color: transparent;
     border: 1px solid #525355;
     border-radius: 6px;
+    padding:;
+}
+
+.note-form {
+    border: solid 1px #525355;
+    border-radius: 5px;
 }
 
