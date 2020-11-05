@@ -35,15 +35,18 @@ function displayNote() {
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const card = `
-                <div class="card" style="width: 18rem; background: #191b1de5">
-                    <div class="card-body">
-                        <h5 class="card-title">${note.title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${note.category}</h6>
-                        <p class="card-text">${note.text}</p>
-                        <button class="btn btn-danger text-white"><i class="fas fa-trash-alt"></i></button>
-                        <button class="btn btn-warning text-white"><i class="fas fa-pencil-alt"></i></button>    
-                    </div>
+        <div class="col-4 p-2">
+            <div class="card w-100" style="width: 18rem; background: #191b1de5">
+                <div class="card-body">
+                    <h5 class="card-title">${note.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${note.category}</h6>
+                    <p class="card-text">${note.text}</p>
+                    <button class="btn btn-danger text-white" onclick="deleteNote('${note.id}')"><i
+                        class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-warning text-white"><i class="fas fa-pencil-alt"></i></button>
                 </div>
+            </div>
+        </div>
                 `
         rows.push(card)
     }
@@ -51,3 +54,11 @@ function displayNote() {
 }
 
 displayNote()
+
+function deleteNote(noteId) {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    const filteredNotes = notes.filter((notes) => notes.id !== noteId);
+    const notesJson = JSON.stringify(filteredNotes);
+    localStorage.setItem('notes', notesJson);
+    displayNote();
+}
