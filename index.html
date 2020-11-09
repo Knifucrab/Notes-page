@@ -37,8 +37,7 @@
     <div class="p-5 d-flex justify-content-center">
         <form class=" note-form d-flex flex-column w-25 p-2" id="noteForm">
             <div class="p-2 ">
-                <label for="title" class="text-white">Titulo</label>
-                <input type="text" id="title" class="note-title text-white w-75" maxlength="60">
+                <input type="text" id="title" required  class="note-title text-white w-75" maxlength="60" placeholder="Titulo">
             </div>
             <div class="p-1 d-flex justify-content-center">
                 <textarea name="" form="noteForm" id="text" cols="25" rows="5" maxlength="500"
@@ -71,6 +70,45 @@
             
         </div>
     </section>
+
+    <!-- Modal de edicion de notes -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
+        <div class="modal-dialog" role="document" >
+          <div class="modal-content text-white" style=background-color:#202124;" >
+            <div class="modal-header" >
+              <h5 class="modal-title text-black" id="exampleModalLabel">Edita tu nota</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" class="d-flex flex-column" id="formEdit">
+                  <label for="title">Titulo</label>
+                  <input id="editedTitle" type="text" required class="w-50 border border-secondary text-white rounded" style="background-color: transparent;">
+                  <label for="text">Contenido</label>
+                  <textarea id="editedText" name="" id="" cols="50" rows="10" class="w-75 border border-secondary text-white rounded" style="background-color: transparent; resize: none;" maxlength="500"></textarea>
+                  <select id="editedCategory" class="custom-select text-white"
+                        style="background-color: rgb(98, 98, 98);">
+                        <option value="" selected>Ninguna</option>
+                        <option value="Trabajo">Trabajo</option>
+                        <option value="Tareas">Tareas</option>
+                        <option value="Compras">Compras</option>
+                    </select>
+                  <button type="submit" class="btn btn-warning">
+                    Actualizar
+                  </button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cerrar
+                  </button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Scripts y links -->
     <div>
