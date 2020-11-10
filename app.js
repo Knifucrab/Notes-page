@@ -45,18 +45,20 @@ function displayNotes(notes) {
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
         const card = `
-        <div class="col-4 p-2">
-        <div class="card borer border-secondary rounded" style="width: 18rem; background: #202124; width: 85%">
+        <div class="col-xl-3 col-md-4 col-lg-4 col-sm-6 col-12 p-2 d-flex justify-content-center">
+        <div class="card borer border-secondary rounded" style="background: #202124; width: 100%; height: auto;">
             <div class="card-body">
                 <h5 class="card-title">${note.title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${note.category}</h6>
                 <p class="card-text">${note.text}</p>
-                <button class="btn btn-danger text-white" onclick="deleteNote('${note.id}')"><i
+                <div class="d-flex justify-content-end align-items-end">
+                  <button class="btn btn-danger text-white" onclick="deleteNote('${note.id}')"><i
                     class="fas fa-trash-alt"></i></button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="loadForm('${note.id}')"><i class="fas fa-pencil-alt"></i></button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" onclick="loadForm('${note.id}')"><i class="fas fa-pencil-alt"></i></button>
+                </div>  
             </div>
+          </div>
         </div>
-    </div>
                 `
         rows.push(card)
     }
@@ -82,7 +84,7 @@ const loadForm = (noteId) => {
   const notes = JSON.parse(localStorage.getItem('notes')) || [];
   const note = notes.find(u => u.id === noteId);
   editedTitle.value = note.title;
-  editedText.value = note.title;
+  editedText.value = note.text;
   editedCategory.value = note.category;
   editNoteId = noteId;
 }
