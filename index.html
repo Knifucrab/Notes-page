@@ -18,24 +18,28 @@
 
     <!-- Navbar -->
     <nav class="row navbar">
-        <div class="col-3">
+        <div class="col-xl-3 col-sm-2 col-md-4 col-lg-3 col-2">
             <div>
                 <img src="sticky-notes.png" width="40" alt="">
-                <a class="navbar-brand text-white">Reminder</a>
+                <a class="navbar-brand text-white nav-title-text">Reminder</a>
             </div>
         </div>
-        <div class="search col-9 justify-content-around">
-            <form action="" class="nav-form">
-                <input type="" class="nav-input text-white" placeholder="Buscar">
-                <i class="fas fa-search text-white nav-search-icon pl-3 fa-lg d-flex "></i>
+        <div class="search col-xl-9 col-md-8 col-lg-8 col-sm-10 col-10 justify-content-around">
+            <form action="" class="nav-form row" id="searchForm">
+                <input type="search" id="search" class="nav-input text-white col-9 col-xl-5" placeholder="Buscar">
+                <div class="col-3 col-xl-1">
+                    <button class="btn btn-outline-warning d-flex justify-content-center align-items-center" style="height: 35px; ">
+                        <i class="fas fa-search text-white fa-lg"></i>
+                    </button>
+                </div>
             </form>
         </div>
     </nav>
 
     <!-- take a note -->
     <h2 class="text-center text-white pt-3">Toma una nota!</h2>
-    <div class="p-5 d-flex justify-content-center">
-        <form class=" note-form d-flex flex-column w-25 p-2" id="noteForm">
+    <div class="p-5 d-flex justify-content-center row">
+        <form class=" note-form d-flex flex-column p-2 col-sm-8 col-md-6 col-lg-5 col-xl-3" id="noteForm">
             <div class="p-2 ">
                 <input type="text" id="title" required  class="note-title text-white w-75" maxlength="60" placeholder="Titulo">
             </div>
@@ -48,7 +52,7 @@
                 <div class="input-group-prepend d-flex align-items-center p-2"">
                     <label for="" class=" text-white">Categoria</label>
                 </div>
-                <div class="w-25">
+                <div style="min-width: 50%;">
                     <select class="custom-select text-white" id="categoryInput"
                         style="background-color: rgb(98, 98, 98);">
                         <option value="" selected>Ninguna</option>
@@ -82,29 +86,32 @@
               </button>
             </div>
             <div class="modal-body">
-              <form action="" class="d-flex flex-column" id="formEdit">
+              <form action="" class="d-flex flex-column container" id="formEdit">
                   <label for="title">Titulo</label>
                   <input id="editedTitle" type="text" required class="w-50 border border-secondary text-white rounded" style="background-color: transparent;">
                   <label for="text">Contenido</label>
                   <textarea id="editedText" name="" id="" cols="50" rows="10" class="w-75 border border-secondary text-white rounded" style="background-color: transparent; resize: none;" maxlength="500"></textarea>
-                  <select id="editedCategory" class="custom-select text-white"
-                        style="background-color: rgb(98, 98, 98);">
+                  <select id="editedCategory" class="custom-select text-white mb-4 mt-4"
+                        style="background-color: rgb(98, 98, 98); max-width: 50%;">
                         <option value="" selected>Ninguna</option>
                         <option value="Trabajo">Trabajo</option>
                         <option value="Tareas">Tareas</option>
                         <option value="Compras">Compras</option>
                     </select>
-                  <button type="submit" class="btn btn-warning">
-                    Actualizar
-                  </button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">
-                    Cerrar
-                  </button>
+                    <div class="modal-footer d-flex flex-wrap row justify-content-end">
+                            <div class=" p-2 d-flex col-3">
+                                <button type="submit" class="btn btn-warning w-100">
+                                    Actualizar
+                                </button>
+                            </div>
+                            <div class=" p-2 d-flex col-3">
+                                <button type="button" class="btn btn-danger w-100" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        
+                    </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
             </div>
           </div>
         </div>

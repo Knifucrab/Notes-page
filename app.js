@@ -8,6 +8,8 @@ const editedTitle = document.getElementById('editedTitle');
 const editedText = document.getElementById('editedText');
 const editedCategory = document.getElementById('editedCategory');
 let editUserId = '';
+const searchForm = document.getElementById('searchForm')
+const search = document.getElementById('search')
 
 
 const generateId = function () {
@@ -33,42 +35,12 @@ noteForm.onsubmit = (e) => {
     console.log(notes);
     noteForm.reset();
 
-    displayNote()
+    displayAllNotes()
 }
 
-// function getModal(note) {
-//     const createdAt = new Date(note.createdAt)
-//     return `
-//     <!-- Modal -->
-//     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
-//       <div class="modal-dialog" role="document" >
-//         <div class="modal-content text-white" style=background-color:#202124;" >
-//           <div class="modal-header" >
-//             <h5 class="modal-title text-black" id="exampleModalLabel">Edita tu nota</h5>
-//             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//               <span aria-hidden="true">&times;</span>
-//             </button>
-//           </div>
-//           <div class="modal-body">
-//             <form action="" class="d-flex flex-column">
-//                 <label for="">Titulo</label>
-//                 <input type="text" class="w-50 border border-secondary text-white rounded" style="background-color: transparent;">
-//                 <label for="">Contenido</label>
-//                 <textarea name="" id="" cols="50" rows="10" class="w-75 border border-secondary text-white rounded" style="background-color: transparent; resize: none;" maxlength="500"></textarea>
-//             </form>
-//           </div>
-//           <div class="modal-footer">
-//             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-//             <button type="button" class="btn btn-primary">Guardar</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//     `
-// }
 
-function displayNote() {
-    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+function displayNotes(notes) {
     const rows = []
     for (let i = 0; i < notes.length; i++) {
         const note = notes[i];
@@ -91,14 +63,19 @@ function displayNote() {
     notesAlmacenator.innerHTML = rows.join('')
 }
 
-displayNote()
+function displayAllNotes() {
+  const notes = JSON.parse(localStorage.getItem('notes')) || [];
+  displayNotes(notes);
+}
+
+displayAllNotes()
 
 function deleteNote(noteId) {
     const notes = JSON.parse(localStorage.getItem('notes')) || [];
     const filteredNotes = notes.filter((notes) => notes.id !== noteId);
     const notesJson = JSON.stringify(filteredNotes);
     localStorage.setItem('notes', notesJson);
-    displayNote();
+    displayAllNotes();
 }
 
 const loadForm = (noteId) => {
@@ -136,6 +113,16 @@ formEdit.onsubmit = (e) => {
   const notesJson = JSON.stringify(updatedNotes);
   localStorage.setItem('notes', notesJson);
   formEdit.reset();
-  displayNote();
+  displayAllNotes();
   $('#editModal').modal('hide')
+}
+
+searchForm.onsubmit = e => {
+  e.preventDefault();
+  const notes = JSON.parse(localStorage.getItem('notes')) || [];
+  const term = search.value.toLowerCase();
+  const filteredNotes = notes.filter(n => (
+    n.title.toLowerCase().includes(term) || n.text.toLowerCase().includes(term)
+  ))
+  displayNotes(filteredNotes)
 }
